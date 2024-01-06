@@ -22,6 +22,7 @@ const  ListComponent = () => {
   useEffect(() => {
     listEmployees().then((response) => {
       setList(response.data);
+      console.log('***' + response.data.length)
       console.log(response.data);
     })
     .catch(error => console.log(error))
@@ -37,7 +38,7 @@ const  ListComponent = () => {
         paginationModel: { page: 0, pageSize: 5 },
       },
     }}
-    pageSizeOptions={[5, 10]}
+    pageSizeOptions={[5, 10, 15]}
     checkboxSelection
   />
   <GridBottom/>
