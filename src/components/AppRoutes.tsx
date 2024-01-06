@@ -10,7 +10,8 @@ export const AppRoutes = () => {
       <Routes>
         <Route path='/' element={ <ListComponent/>}/>
         <Route path='/employees' element={ <ListComponent/>}/>
-        <Route path='/employee/add' element={<AddEmployee/>}/>
+        <Route path='/employee-add' element={<AddEmployee/>}/>
+        <Route path='/edit-employee/:id' element={<AddEmployee/>}/>
       </Routes>
     </BrowserRouter>);
 

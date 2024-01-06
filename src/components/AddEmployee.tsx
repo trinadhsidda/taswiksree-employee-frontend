@@ -1,8 +1,8 @@
 import { Box, Button, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { addEmployee } from '../services/MyListService';
-import { useNavigate } from 'react-router-dom';
+import { addEmployee, findEmployee } from '../services/MyListService';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const AddEmployee = () => {
 
@@ -16,14 +16,32 @@ export const AddEmployee = () => {
       email: ''
     });
 
-    
+    const {id} = useParams();
+
+    const[employee,setEmployee] = useState();
+
+    useEffect(() => {
+      console.log('***' + id);
+      if(id){
+        findEmployee(id).then((response) => {
+          setEmployee(response.data)
+          setFirstName(response.data.firstName);
+          setLastName(response.data.lastName);
+          setEmail(response.data.email);
+        });
+        console.log(employee);
+      }
+
+    },[id]);
 
     function addEmployeeLocal(e:any){
 
       e.preventDefault();
 
+      console.log('###' + id);
+
       if(validateForm()){
-        const employee = {firstName,lastName,email};
+        const employee = {id,firstName,lastName,email};
         console.log({...employee});
         addEmployee(employee).then((response) => {
           console.log(response.data);
@@ -67,11 +85,19 @@ export const AddEmployee = () => {
 
     }
 
+    function pageTitle(){
+      if(id){
+        return <h1 className="container d-flex align-items-center justify-content-center">Update Employee</h1>
+      }
+      else {
+        return <h1 className="container d-flex align-items-center justify-content-center">Add Employee</h1>
+      }
+    }
     
   return (
 
     <>
-    <h1 className="container d-flex align-items-center justify-content-center">Add Employee</h1>
+    {pageTitle()}
     
     <Box className="container d-flex align-items-center justify-content-center"
     component="form"
@@ -112,7 +138,7 @@ export const AddEmployee = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <Button className='mb-3' variant="contained" endIcon={<PersonAddIcon fontSize="large"/>} onClick={addEmployeeLocal} size="large">
-            Add
+            {id ? 'Update' : 'Add'}
             </Button>
         
         

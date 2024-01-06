@@ -20,7 +20,6 @@ export default function MyAppBar() {
             sx={{ mr: 2 }}
           >
             <Button variant="contained" href='/' endIcon={<HomeIcon fontSize="large"/>}/>
-            {/*<HomeIcon href='/'/>*/}§
             
           </IconButton>
           
