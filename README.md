@@ -7,6 +7,22 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## Required Softwares
+
+- Node JS v20.10.0
+- Microsoft Visual Studio code / IntelliJ IDE
+
+## Steps to setup the UI application
+
+- Check out the code from Github: https://github.com/trinadhsidda/taswiksree-employee-frontend.git
+- Import the code to IDE
+- Go to terminal and run 
+```
+  - npm install : to install NPM modules
+  - npm run dev : to run the server in local
+```
+- Access the UI from: http://localhost:3000/
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
