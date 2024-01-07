@@ -19,7 +19,7 @@ Currently, two official plugins are available:
 - Go to terminal and run 
 ```
   - npm install : to install NPM modules
-  - npm run dev : to run the server in local
+  - npm run dev : to run the server in local 
 ```
 - Access the UI from: http://localhost:3000/
 
