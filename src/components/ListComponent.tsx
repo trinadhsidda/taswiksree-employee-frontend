@@ -40,18 +40,18 @@ const  ListComponent = () => {
     useState<GridRowSelectionModel>([]);
 
   function updateEmployee(){
-    console.log(rowSelectionModel.values().next().value);
+
+      console.log(rowSelectionModel.values().next().value);
     
-    //console.log((myList[rowSelectionModel.values().next().value-1]).id);
-    //const id = (myList[rowSelectionModel.values().next().value-1]).id;
-    
-    //console.log(rowSelectionModel.values().next().value);
     
     const updateId = rowSelectionModel.values().next().value;
-    //(myList[rowSelectionModel.values().next().value-1]).id;
     console.log('aaa ' + updateId);
 
-    navigator(`/edit-employee/${updateId}`);
+    if(updateId){
+
+      navigator(`/edit-employee/${updateId}`);
+    }
+    
   }
 
   function deleteEmployee(){
@@ -59,8 +59,11 @@ const  ListComponent = () => {
     
     const deleteId = rowSelectionModel.values().next().value;
     console.log('deleteId: ' + deleteId);
-    deleteEmployeeById(deleteId);
-    navigator(0);
+    if(deleteId){
+      deleteEmployeeById(deleteId);
+      navigator(0);
+    }
+    
   }
 
   return <div style={{ height: '100%', width: '100%' }}>
@@ -86,11 +89,11 @@ const  ListComponent = () => {
   />
   <Box>
   <br/>
-  <Button variant="contained" endIcon={<EditIcon fontSize="large"/>} onClick={updateEmployee}>
+  <Button variant="contained" endIcon={<EditIcon fontSize="large"/>} onClick={updateEmployee} disabled={rowSelectionModel ? false : true}>
         Update Employee</Button>
 
         &nbsp;&nbsp;&nbsp;
-  <Button variant="contained" endIcon={<EditIcon fontSize="large"/>} onClick={deleteEmployee}>
+  <Button variant="contained" endIcon={<EditIcon fontSize="large"/>} onClick={deleteEmployee} disabled={rowSelectionModel ? false : true}>
         Delete Employee</Button>
         
   <Box/><br/>
